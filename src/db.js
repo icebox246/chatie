@@ -7,7 +7,9 @@ function sha256(msg) {
     return crypto.createHash('sha256').update(msg).digest('base64');
 }
 
-const sql = postgres(process.env.DATABASE_URL, {ssl: false});
+const sql = process.env.NODE_ENV === 'production' ?
+    postgres(process.env.DATABASE_URL, {ssl: {rejectUnauthorized: false}}) :
+    postgres(process.env.DATABASE_URL);
 
 async function initTables() {
     await sql`
