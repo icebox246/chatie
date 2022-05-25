@@ -52,10 +52,12 @@ html
 					form#send-form(@submit="send", v-if="currentChannel")
 						textarea.field.flex1(
 							type="text",
+							rows="2",
+							cols="1",
 							v-model="msgText",
 							placeholder="message...",
 							maxlength="200", required,
-							@keypress="messageFieldKey"
+							@keypress="messageFieldKey", autofocus
 							)
 						input.send(type="submit", value=">")
 

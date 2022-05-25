@@ -2,7 +2,9 @@
 
 ![screen shot](screenshot.png)
 
-Available on [chatienow.herokuapp.com](https://chatienow.herokuapp.com/).
+Simple online chatting app.
+
+Available on [chatienow.herokuapp.com](https://chatienow.herokuapp.com/) as webapp and installable PWA.
 
 Written in JavaScript, designed to run on NodeJS backend. 
 Communication is based on REST API and WebSockets.
