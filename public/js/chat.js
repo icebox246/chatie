@@ -204,6 +204,9 @@ createApp({
         this.my_name = MY_NAME;
 
         this.currentChannel = this.channels[0].name;
+
+
+		document.body.style.height = "100vh";
     }
 }).mount('#app');
 
