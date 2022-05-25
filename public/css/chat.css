@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*, input {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+}
+
+
+body {
+	display:flex;
+	flex-direction:column;
+	justify-content: stretch;
+	background: var(--background);
+	overscroll-behavior: contain;
+}
+
+.columns {
+	display: flex;
+	height: 100vh;
+	max-width: 100vw;
+	overflow: hidden;
+}
+
+
+.flex1 {
+	flex:1;
+}
+.flex2 {
+	flex:2;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+#send-form {
+	display: flex;
+	margin: 1em 0;
+}
+
+.column.side {
+	background-color: var(--alt-background);
+	padding: 0 1em;
+	position: relative;
+	transition: transform 200ms linear;
+	transform: translateX(0%);
+	z-index: 100;
+}
+
+.column.side.hidden {
+	transform: translateX(-100%);
+	position: absolute;
+	height: 100vh;
+}
+
+.column.main {
+	padding: 0 1em;
+}
+
+#send-form .field {
+	resize: none;	
+	padding: 0.25em;
+	font-size: 1em;
+	background-color: var(--alt-background);
+	border: var(--accent) 2px solid;
+	border-radius: 0.25em;
+	margin-right: 0.5em;
+}
+
+#send-form .send {
+	background-color: var(--green);
+	font-size: 1em;
+	padding: 0 1em;
+	border: none;
+	border-radius: 0.25em;
+	color: var(--background);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.message {
+	margin: 0.5em 0;
+
+	opacity: 0;
+	animation: fade-in 300ms ease-out forwards;
+
+	display:flex;
+}
+
+.message .avatar {
+	height: 3em;
+	margin-right: 0.5em;
+}
+
+.message .delete {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.message.my-message:hover .delete {
+	opacity: 1;
+
+	padding: 1em;
+	display: inline;
+	color: var(--red);
+	pointer-events: all;
+	cursor: pointer;
+}
+
+.message .message-text {
+	background-color: var(--alt-background);
+	padding: 0.5em;
+	min-width:100px;
+	border-radius: 0.5em;
+	border-top-left-radius: 0;
+}
+
+.message.my-message .user-name {
+	color: var(--purple);
+}
+
+.message .user-name{
+	color: white;
+}
+
+#messages-container {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	width: 100%;
+}
+
+#messages {
+	position: relative;
+	overflow-y: hidden;
+	flex: 1;
+
+
+	background: 
+	linear-gradient(
+		var(--background),
+		transparent 100%
+	),repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 40px,
+		var(--alt-background) 40px,
+		var(--alt-background) 42px
+	), 
+	repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 40px,
+		var(--alt-background) 40px,
+		var(--alt-background) 42px
+	);
+	
+}
+
+#channels {
+	list-style: none;
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 0.5em;
+}
+
+.channel a {
+	text-decoration: none;
+	color: white;
+	padding: 0.5em 0;
+}
+
+
+.channel.current .channel-name * {
+	color: var(--green);
+}
+
+.channel {
+	display: flex;
+	justify-content: space-between;
+}
+
+.channel .unsub {
+	opacity: 0;
+	padding: 0.5em 1em;
+	color: var(--red);
+}
+
+.channel:hover .unsub {
+	opacity: 1;
+}
+
+p.chan-display {
+	color: var(--green);
+	padding: 1em;
+	border-bottom: var(--accent) 1px solid;
+	text-align: center;
+}
+
+.connection-error {
+	color: var(--red);
+	margin-left: 2em;
+}
+
+#sub-form {
+	display: flex;
+	justify-content: space-between;
+}
+
+#sub-form .field {
+	max-width: 140px;
+	background: transparent;
+
+	border: none;
+	padding: 0.1em;
+	font-size: 1em;
+	border-bottom: 2px solid var(--accent);
+
+	outline: none;
+}
+
+#sub-form .sub {
+	background: transparent;	
+	border: none;
+	font-size: 1em;
+}
+
+.status {
+	color: var(--accent);
+}
+
+#toggle-pane {
+	position: absolute;
+	display: block;
+	right: 0;
+
+	transform:translateX(99%);
+
+	font-size: 1em;
+
+	background-color: var(--alt-background);
+	border: none;
+
+	border-bottom-right-radius: 1em;
+
+	width: 3em;
+	height: 3em;
+	outline: none;
+	cursor: pointer;
+}
+
+#acc-info {
+	display: flex;
+	align-items: center;
+	margin: 1em 0;
+}
+
+#acc-info img {
+	height: 3em;
+	margin-right: 0.5em;
+}
+
+h1 a {
+	text-decoration: none;
+}

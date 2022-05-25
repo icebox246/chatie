@@ -1,0 +1,52 @@
+html
+	head
+		title Welcome!
+
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+		
+		script(src="js/register-service-worker.js")
+		script(src="js/landing.js", defer)
+
+		link(rel="stylesheet",href="css/palette.css")
+		link(rel="stylesheet",href="css/landing.css")
+		link(rel="manifest" href="manifest.json")
+	
+	body
+		h1 chatie
+
+		#center-container
+			unless login
+				#login-forms
+					form.login-form(action="/login", method="post", enctype="application/x-www-form-urlencoded")
+						.box.login
+							h1 Login
+							label(for="login") username
+							input.field(type="text", name="login", required)
+							label(for="password") password
+							input.field(type="password", name="password", required)
+							input.button.green(type="submit", value="log in")
+
+					p.separator -or-
+
+					form.login-form(action="/register", method="post", enctype="application/x-www-form-urlencoded")
+						.box
+							h1 Create account
+							label(for="login") username
+							input.field(type="text", name="login", required)
+							label(for="password") password
+							input.field(type="password", name="password", required)
+							input.button.orange(type="submit", value="sign up")
+
+			else
+				#welcome
+					h1 Hello, #{login}!
+					img(src=`/avatar/${login}.svg`)
+					a.logout(href="/logout") Log out
+					a.button.green(href="/chat") Chat!
+
+			#install-container.hidden
+				p Consider installing this app on your phone/deskop:
+				button#install-button Install
+
+
+		p by Adam Rogowski (2022)

@@ -1,0 +1,67 @@
+html
+	head
+		script(src="https://unpkg.com/vue@3")
+
+		link(rel="stylesheet",href="css/palette.css")
+		link(rel="stylesheet",href="css/chat.css")
+
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+		title Chat page
+
+	body
+		#app
+			.columns
+				.column.side(:class="(sidePaneVisible) ? '' : 'hidden'")
+					button#toggle-pane(@click="toggleSidePane") {{ (sidePaneVisible) ? '<' : '>' }}
+					h1 
+						a(href="/") chatie
+					#acc-info
+						img(src=`/avatar/${login}.svg`)
+						p#login-name= `${login}`
+					h3 Channels:
+					form#sub-form(@submit="subscribeChannel")
+						input.field(type="text", v-model="subscribeChannelField",placeholder="channel name", maxlength="10")
+						input.sub(type="submit", value="+")
+					ul#channels
+						li.channel(v-for="c in channels", :class="(currentChannel == c.name) ? 'current' : ''")
+							
+							a.channel-name(@click="changeChannel(c.name)", :href='"#" + c.name') 
+								span {{ c.name }}
+								span(v-if="c.unread") *
+							a.unsub(@click="unsubscribeChannel(c.name)", href="#", :title="`unsubscribe ${c.name}`") x
+						
+
+				.column.main.flex1
+					p.chan-display(@click="toggleSidePane") 
+						| {{ currentChannel || "-- no channel --" }}
+						span.connection-error(v-if="!connected") no connection
+
+					#messages.flex1(@wheel="scrolled", @touchmove="touchdragged" @touchstart="touchstarted", ref="msgWindow")
+						#messages-container(ref="msgCont", :style="'bottom:' + scrollY + 'px;'")
+							h3.connect-message(v-if="currentChannel == null") Choose a channel to connect or subscribe to new channel.
+							p.status(v-if="state == 'full'") No previous messages
+							p.status(v-if="state == 'loading'") Loading...
+
+							.message(v-for="msg in currentMessages", :key="msg.id", :class="(msg.name == my_name) ? 'my-message' : ''")
+								img.avatar(:src="`/avatar/${msg.name}.svg`")
+								.message-body
+									p.user-name {{ msg.name }}
+									p.message-text {{ msg.text }}
+								p.delete(title="delete message", @click="deleteMessage(msg.id)") X
+
+					form#send-form(@submit="send", v-if="currentChannel")
+						textarea.field.flex1(
+							type="text",
+							v-model="msgText",
+							placeholder="message...",
+							maxlength="200", required,
+							@keypress="messageFieldKey"
+							)
+						input.send(type="submit", value=">")
+
+		script const INIT_CHANN_LIST = !{JSON.stringify(channels)}, MY_NAME= !{`'${login}'`}
+		script(src="js/chat.js")
+
+
+
+

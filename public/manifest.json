@@ -1,0 +1,15 @@
+{
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"short_name": "chatie",
+	"name": "chatie",
+	"icons": [
+		{
+			"src":"/favicon.svg",
+			"sizes": "any"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#282a36",
+	"theme_color": "#282a36",
+	"display": "standalone"
+}

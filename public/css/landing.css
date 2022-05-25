@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+
+*,a,button {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+
+	font-family: 'Poppins', sans-serif;
+	color:white;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 95vh;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3em;
+}
+
+input {
+	font-size: 1em;
+}
+
+html {
+
+	background: 
+	linear-gradient(
+		var(--background),
+		transparent 100%
+	),repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 40px,
+		var(--alt-background) 40px,
+		var(--alt-background) 42px
+	), 
+	repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 40px,
+		var(--alt-background) 40px,
+		var(--alt-background) 42px
+	), var(--background);
+}
+
+#login-forms {
+	display: flex;
+	align-items: center;
+}
+
+.separator {
+	margin: 2em;
+}
+
+.login-form {
+	display: flex;
+	flex-direction:column;
+}
+
+.login-form .box {
+	display: flex;
+	flex-direction:column;
+	background: var(--alt-background);
+	padding: 2em;
+	border-radius: 1em;
+}
+
+.box.login {
+	background: var(--accent);
+}
+.box.login .field {
+	background-color: var(--alt-background);
+}
+
+
+.login-form label {
+	margin: 0.75em 0 0.25em;
+}
+
+.field {
+	background-color: var(--background);
+	border: var(--accent) 2px solid;
+	padding: 0.5em;
+	border-radius: 0.25em;
+}
+
+input.button {
+	padding: 0.5em;
+	border: none;
+	border-radius: 0.25em;
+	cursor: pointer;
+	margin-top: 0.75em;
+}
+
+.red {
+	background-color: var(--red);
+}
+.orange {
+	background-color: var(--orange);
+}
+
+.green {
+	background-color: var(--green);
+	color: var(--background);
+}
+
+#welcome {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#welcome a {
+	text-decoration: none;
+	margin: 0.5em;
+}
+
+#welcome .button {
+	padding: 0.5em;
+	border-radius: 0.25em;
+	font-size: 2em;
+}
+
+#welcome .logout {
+	font-size: 1.2em;
+}
+
+#welcome img {
+	height: 6em;
+}
+
+#install-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 1em;
+	text-align: center;
+}
+
+#install-container.hidden {
+	display: none;
+}
+
+#install-button {
+	background-color: var(--yellow);
+	color: var(--background);
+	font-size: 1.5em;
+	padding: 0.5em;
+	border-radius: 0.25em;
+	border:none;
+	margin: 0.5em;
+}
+
+@media only screen and (max-width: 800px) {
+	#login-forms {
+		flex-direction: column;
+	}
+}
