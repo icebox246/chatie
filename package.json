@@ -1,10 +1,11 @@
 {
-  "name": "ws_chat",
+  "name": "chatie",
   "version": "1.0.0",
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "dev": "nodemon -e js,css,html,pug"
+    "dev": "nodemon -e js,css,html,pug",
+	"start": "node src/main.js"
   },
   "keywords": [],
   "author": "",
