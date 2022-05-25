@@ -7,7 +7,7 @@ function sha256(msg) {
     return crypto.createHash('sha256').update(msg).digest('base64');
 }
 
-const sql = postgres(process.env.DATABASE_URL);
+const sql = postgres(process.env.DATABASE_URL, {ssl: false});
 
 async function initTables() {
     await sql`
@@ -122,7 +122,7 @@ async function deleteMessage(messageId) {
     }
 }
 
-async function fetchNewestMessages(chann,limit = 20) {
+async function fetchNewestMessages(chann, limit = 20) {
     try {
         const res = await sql`
 		select Message.id as id, UserAcc.login as name, Message.content as text
@@ -138,7 +138,7 @@ async function fetchNewestMessages(chann,limit = 20) {
     }
 }
 
-async function fetchMessagesBefore(chann,before, limit = 20) {
+async function fetchMessagesBefore(chann, before, limit = 20) {
     try {
         const res = await sql`
 		select Message.id as id, UserAcc.login as name, Message.content as text
@@ -186,10 +186,10 @@ module.exports = {
     loginUser,
     getUserInfo,
     addMessage,
-	deleteMessage,
+    deleteMessage,
     fetchNewestMessages,
     fetchMessagesBefore,
-	subscribeUserToChannel,
-	unsubscribeUserToChannel,
+    subscribeUserToChannel,
+    unsubscribeUserToChannel,
 }
 
